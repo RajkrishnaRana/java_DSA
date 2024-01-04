@@ -1,34 +1,27 @@
 #include <iostream>
+#include <queue>
 using namespace std;
 
-// string solve(string s)
-// {
-//   if (s.length() <= 1)
-//     return s;
-
-//   if (s[0] == s[1])
-//     return solve(s.substr(1));
-//   else
-//   {
-//     string str = solve(s.substr(1));
-//     return s[0] + str;
-//   }
-// }
-
-string solve(string s)
+void solve(int *arr, int k)
 {
-  if (s.length() <= 1)
-    return s;
+  priority_queue<int, vector<int>, greater<int>> pq;
 
-  if (s[0] == 'p' && s[1] == 'i')
-    return "3.14" + solve(s.substr(2, s.length()));
-  return s[0] + solve(s.substr(1));
+  for (int i = 0; i < 5; i++)
+    pq.push(arr[i]);
+
+  while (k)
+  {
+    cout << pq.top() << " ";
+    pq.pop();
+    k--;
+  }
 }
 
 int main()
 {
-  string s = "xpixpixpipp";
-  string ans = solve(s);
-  cout << ans;
+  int arr[5] = {5, 2, 7, 1, 3};
+  int k = 2;
+  solve(arr, k);
+
   return 0;
 }
